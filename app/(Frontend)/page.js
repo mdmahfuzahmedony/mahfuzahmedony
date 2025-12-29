@@ -1,8 +1,11 @@
+import Banner from "../Components/Banner/Banner";
+import Footer from "../Components/Footer/Footer";
+import Navbar from "../Components/Navbar/Navbar";
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-  <h1>sfdf</h1>
-  div
+    <div className="min-h-screen">
+      <Banner></Banner>
   
     </div>
   );
