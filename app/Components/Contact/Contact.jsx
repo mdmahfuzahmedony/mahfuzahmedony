@@ -7,9 +7,9 @@ const Contact = () => {
   const [mounted, setMounted] = useState(false);
   const [status, setStatus] = useState('idle'); // idle, sending, success
 
-  // useEffect(() => {
-  //   setMounted(true);
-  // }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSend = (e) => {
     e.preventDefault();
