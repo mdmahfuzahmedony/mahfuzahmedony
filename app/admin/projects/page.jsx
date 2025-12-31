@@ -1,51 +1,88 @@
 'use client';
-import React from 'react';
-import { Pencil, Trash2, ExternalLink, Plus } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Pencil, Trash2, ExternalLink, Plus, Loader2 } from 'lucide-react';
+import Link from 'next/link';
+import Swal from 'sweetalert2';
 
 const AdminProjects = () => {
-  const projects = [
-    { id: 1, name: "E-Commerce Platform", category: "Full Stack", link: "project-url.com" },
-    { id: 2, name: "AI Portfolio Website", category: "Frontend", link: "ai-site.com" },
-  ];
+  const [projects, setProjects] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchProjects = async () => {
+    try {
+      const res = await axios.get('http://localhost:2001/projects');
+      setProjects(res.data);
+      setIsLoading(false);
+    } catch (err) { console.error(err); setIsLoading(false); }
+  };
+
+  useEffect(() => { fetchProjects(); }, []);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Delete Project?',
+      text: "This will remove the project from your portfolio.",
+      icon: 'warning',
+      showCancelButton: true,
+      background: '#0a0f1d', color: '#fff', confirmButtonColor: '#ef4444'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await axios.delete(`http://localhost:2001/projects/${id}`);
+        setProjects(projects.filter(p => p._id !== id));
+        Swal.fire('Deleted!', 'Project has been removed.', 'success');
+      }
+    });
+  };
 
   return (
-    <div className="space-y-8">
-      <div className="flex justify-between items-center">
+    <div className="space-y-8 text-white">
+      <div className="flex justify-between items-center px-4">
         <div>
-          <h2 className="text-3xl font-black text-white">Manage <span className="text-cyan-400">Projects.</span></h2>
-          <p className="text-slate-500 text-sm mt-1">Add or update your portfolio projects.</p>
+          <h2 className="text-3xl font-black">Manage <span className="text-cyan-400">Projects.</span></h2>
+          <p className="text-slate-500 text-sm mt-1 uppercase font-bold tracking-widest text-[10px]">Total: {projects.length} Works</p>
         </div>
-        <button className="flex items-center gap-2 bg-cyan-400 text-black px-6 py-3 rounded-2xl font-black uppercase text-[10px] tracking-widest transition-all shadow-lg hover:bg-white">
-          <Plus size={16}/> New Project
-        </button>
+        <Link href="/admin/projects/add-project">
+            <button className="flex items-center gap-2 bg-cyan-400 text-black px-8 py-4 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-white transition-all shadow-xl">
+            <Plus size={18}/> New Project
+            </button>
+        </Link>
       </div>
 
-      <div className="bg-[#0a0f1d] border border-white/5 rounded-[2.5rem] overflow-hidden">
-        <table className="w-full text-left">
-          <thead>
-            <tr className="text-slate-500 text-[10px] uppercase tracking-[0.2em] border-b border-white/5">
-              <th className="px-8 py-6 font-black">Project Name</th>
-              <th className="px-8 py-6 font-black">Category</th>
-              <th className="px-8 py-6 font-black">Live Link</th>
-              <th className="px-8 py-6 font-black text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-white/5">
-            {projects.map((proj) => (
-              <tr key={proj.id} className="hover:bg-white/[0.02] transition-colors">
-                <td className="px-8 py-6 text-sm font-bold text-white">{proj.name}</td>
-                <td className="px-8 py-6 text-xs text-orange-500 font-bold uppercase tracking-wider">{proj.category}</td>
-                <td className="px-8 py-6 text-xs text-slate-400 hover:underline cursor-pointer flex items-center gap-1">{proj.link} <ExternalLink size={12}/></td>
-                <td className="px-8 py-6 text-right">
-                   <div className="flex justify-end gap-3">
-                      <button className="p-2 bg-white/5 hover:bg-blue-500/20 text-slate-400 hover:text-blue-500 rounded-lg transition-all"><Pencil size={16}/></button>
-                      <button className="p-2 bg-white/5 hover:bg-red-500/20 text-slate-400 hover:text-red-500 rounded-lg transition-all"><Trash2 size={16}/></button>
-                    </div>
-                </td>
+      <div className="bg-[#0a0f1d] border border-white/5 rounded-[3rem] overflow-hidden shadow-2xl">
+        {isLoading ? (
+          <div className="p-24 flex justify-center"><Loader2 className="animate-spin text-cyan-400" size={40}/></div>
+        ) : (
+          <table className="w-full text-left">
+            <thead>
+              <tr className="text-slate-500 text-[10px] uppercase tracking-[0.2em] border-b border-white/5">
+                <th className="px-10 py-7 font-black">Project Name</th>
+                <th className="px-10 py-7 font-black">Category</th>
+                <th className="px-10 py-7 font-black">Links</th>
+                <th className="px-10 py-7 text-right font-black">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-white/5 py-4">
+              {projects.map((proj) => (
+                <tr key={proj._id} className="hover:bg-white/[0.02] transition-colors group py-2">
+                  <td className="px-10 py-7 font-bold text-sm">{proj.name}</td>
+                  <td className="px-10 py-7 text-[10px] text-orange-500 font-black uppercase tracking-widest">{proj.category}</td>
+                  <td className="px-10 py-7">
+                    <a href={proj.liveLink} target="_blank" className="text-slate-500 hover:text-cyan-400 flex items-center gap-1 text-[10px] font-bold uppercase">Live <ExternalLink size={12}/></a>
+                  </td>
+                  <td className="px-10 py-7 text-right">
+                    <div className="flex justify-end gap-3">
+                      <Link href={`/admin/projects/update/${proj._id}`}>
+                        <button className="p-3 bg-white/5 hover:bg-blue-500/20 text-blue-400 rounded-xl transition-all"><Pencil size={16}/></button>
+                      </Link>
+                      <button onClick={() => handleDelete(proj._id)} className="p-3 bg-white/5 hover:bg-red-500/20 text-red-500 rounded-xl transition-all"><Trash2 size={16}/></button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

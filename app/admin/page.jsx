@@ -13,7 +13,7 @@ const DashboardHome = () => {
     <div>
       <div className="mb-10">
         <h2 className="text-3xl font-black">Welcome Back, <span className="text-cyan-400">Mahfuz!</span></h2>
-        <p className="text-slate-500 mt-2 font-medium">Here's what's happening with your portfolio today.</p>
+        <p className="text-slate-500 mt-2 font-medium">Heres whats happening with your portfolio today.</p>
       </div>
 
       {/* Stats Grid */}
