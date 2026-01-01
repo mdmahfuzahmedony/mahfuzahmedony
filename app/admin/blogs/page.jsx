@@ -13,7 +13,7 @@ const AdminBlogs = () => {
   // ১. সার্ভার থেকে ব্লগ লোড করা
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get("http://localhost:2001/blogs");
+      const res = await axios.get("https://mdmahfuzahmedony-server.vercel.app/blogs");
       setBlogs(res.data);
       setIsLoading(false);
     } catch (err) {
@@ -37,7 +37,7 @@ const AdminBlogs = () => {
       color: "#fff",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:2001/blogs/${id}`);
+        await axios.delete(`https://mdmahfuzahmedony-server.vercel.app/blogs/${id}`);
         fetchBlogs(); // লিস্ট রিফ্রেশ
         Swal.fire("Deleted!", "Blog has been removed.", "success");
       }
@@ -49,7 +49,7 @@ const AdminBlogs = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:2001/blogs/${editingBlog._id}`,
+        `https://mdmahfuzahmedony-server.vercel.app/blogs/${editingBlog._id}`,
         editingBlog
       );
       setEditingBlog(null);

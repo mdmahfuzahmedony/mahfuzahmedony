@@ -16,7 +16,7 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get('http://localhost:2001/projects');
+        const res = await axios.get('https://mdmahfuzahmedony-server.vercel.app/projects');
         setProjects(res.data);
         setIsLoading(false);
       } catch (err) {

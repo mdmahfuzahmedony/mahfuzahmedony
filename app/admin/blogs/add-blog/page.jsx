@@ -27,7 +27,7 @@ const AddBlog = () => {
     e.preventDefault();
     try {
       setIsSubmitting(true);
-      const res = await axios.post('http://localhost:2001/blogs', blogData);
+      const res = await axios.post('https://mdmahfuzahmedony-server.vercel.app/blogs', blogData);
       
       if (res.data.insertedId) {
         Swal.fire({

@@ -11,7 +11,7 @@ const AdminProjects = () => {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get('http://localhost:2001/projects');
+      const res = await axios.get('https://mdmahfuzahmedony-server.vercel.app/projects');
       setProjects(res.data);
       setIsLoading(false);
     } catch (err) { console.error(err); setIsLoading(false); }
@@ -28,7 +28,7 @@ const AdminProjects = () => {
       background: '#0a0f1d', color: '#fff', confirmButtonColor: '#ef4444'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:2001/projects/${id}`);
+        await axios.delete(`https://mdmahfuzahmedony-server.vercel.app/projects/${id}`);
         setProjects(projects.filter(p => p._id !== id));
         Swal.fire('Deleted!', 'Project has been removed.', 'success');
       }

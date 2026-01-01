@@ -10,7 +10,7 @@ const AdminMessages = () => {
 
   const fetchMessages = async () => {
     try {
-      const res = await axios.get('http://localhost:2001/messages');
+      const res = await axios.get('https://mdmahfuzahmedony-server.vercel.app/messages');
       setMessages(res.data);
       setIsLoading(false);
     } catch (err) { console.error(err); setIsLoading(false); }
@@ -27,7 +27,7 @@ const AdminMessages = () => {
       background: '#0a0f1d', color: '#fff', confirmButtonColor: '#ef4444'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:2001/messages/${id}`);
+        await axios.delete(`https://mdmahfuzahmedony-server.vercel.app/messages/${id}`);
         setMessages(messages.filter(m => m._id !== id));
         Swal.fire('Deleted!', 'Message removed.', 'success');
       }

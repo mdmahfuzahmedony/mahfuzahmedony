@@ -19,9 +19,9 @@ const DashboardHome = () => {
         setIsLoading(true);
         // তিনটি API কল একসাথে করা হচ্ছে পারফরম্যান্সের জন্য
         const [blogRes, subRes, msgRes] = await Promise.all([
-          axios.get('http://localhost:2001/blogs'),
-          axios.get('http://localhost:2001/subscribers'),
-          axios.get('http://localhost:2001/messages')
+          axios.get('https://mdmahfuzahmedony-server.vercel.app/blogs'),
+          axios.get('https://mdmahfuzahmedony-server.vercel.app/subscribers'),
+          axios.get('https://mdmahfuzahmedony-server.vercel.app/messages')
         ]);
 
         setData({

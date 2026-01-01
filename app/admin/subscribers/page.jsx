@@ -11,7 +11,7 @@ const AdminSubscribers = () => {
   // ১. সার্ভার থেকে সাবস্ক্রাইবার লোড করা
   const fetchSubscribers = async () => {
     try {
-      const res = await axios.get('http://localhost:2001/subscribers');
+      const res = await axios.get('https://mdmahfuzahmedony-server.vercel.app/subscribers');
       setSubscribers(res.data);
       setIsLoading(false);
     } catch (err) {
@@ -39,7 +39,7 @@ const AdminSubscribers = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await axios.delete(`http://localhost:2001/subscribers/${id}`);
+          const res = await axios.delete(`https://mdmahfuzahmedony-server.vercel.app/subscribers/${id}`);
           if (res.data.deletedCount > 0) {
             // স্টেট থেকে সরিয়ে ফেলা
             setSubscribers(subscribers.filter(sub => sub._id !== id));

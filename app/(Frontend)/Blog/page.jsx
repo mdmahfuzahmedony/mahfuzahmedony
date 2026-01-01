@@ -20,7 +20,7 @@ const BlogPage = () => {
     const fetchBlogs = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('http://localhost:2001/blogs');
+        const response = await axios.get('https://mdmahfuzahmedony-server.vercel.app/blogs');
         setBlogs(response.data);
         setIsLoading(false);
       } catch (error) {

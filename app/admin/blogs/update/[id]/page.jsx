@@ -25,7 +25,7 @@ const UpdateBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`http://localhost:2001/blogs/${id}`);
+        const res = await axios.get(`https://mdmahfuzahmedony-server.vercel.app/blogs/${id}`);
         setBlogData(res.data);
         setLoading(false);
       } catch (err) {
@@ -48,7 +48,7 @@ const UpdateBlog = () => {
     e.preventDefault();
     try {
       setIsUpdating(true);
-      const res = await axios.put(`http://localhost:2001/blogs/${id}`, blogData);
+      const res = await axios.put(`https://mdmahfuzahmedony-server.vercel.app/blogs/${id}`, blogData);
       
       if (res.data.modifiedCount > 0 || res.data.matchedCount > 0) {
         Swal.fire({
