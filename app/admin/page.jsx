@@ -75,7 +75,7 @@ const DashboardHome = () => {
       {/* Welcome Header */}
       <div className="mb-10">
         <h2 className="text-3xl font-black italic">Welcome Back, <span className="text-cyan-400">Mahfuz!</span></h2>
-        <p className="text-slate-500 mt-2 font-medium tracking-wide text-sm uppercase">Here's a quick overview of your portfolio.</p>
+        <p className="text-slate-500 mt-2 font-medium tracking-wide text-sm uppercase">Here a quick overview of your portfolio.</p>
       </div>
 
       {/* Dynamic Stats Grid */}

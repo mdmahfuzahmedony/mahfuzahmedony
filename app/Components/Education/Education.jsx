@@ -7,17 +7,17 @@ const Education = () => {
   const educationData = [
     {
       type: 'Degree',
-      title: 'Bachelor of Science in CSE',
-      institution: 'University Name Here',
-      duration: '2020 - 2024',
+      title: 'Bachelor of Arts',
+      institution: 'Jessore Goverment City Collage',
+      duration: '2022 - 2027',
       description: 'Focused on Software Engineering, Data Structures, and Algorithms.',
       icon: <GraduationCap className="text-blue-500" />,
     },
     {
       type: 'Technical',
       title: 'Full Stack MERN Development',
-      institution: 'Programming Hero / Online Bootcamp',
-      duration: '2022 - 2023',
+      institution: 'Programming Hero ',
+      duration: '2025 - 2026',
       description: 'Intensive training on MongoDB, Express, React, and Node.js.',
       icon: <Code2 className="text-cyan-500" />, // Note: Import Code2 if needed or use BookOpen
     },
@@ -36,7 +36,7 @@ const Education = () => {
         <h2 className="text-[12vw] font-black uppercase">LEARNING</h2>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
+      <div className="max-w-[1600px]  mx-auto px-6 lg:px-4 relative z-10">
         
         {/* SECTION HEADER */}
         <div className="mb-16 text-center lg:text-left">

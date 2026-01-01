@@ -48,7 +48,7 @@ const Footer = () => {
       />
 
       <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl text-slate-600 dark:text-slate-300 transition-colors duration-500">
-        <div className="max-w-[1400px] mx-auto px-6 py-16">
+        <div className="max-w-[1600px] mx-auto px-6  py-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
             
             {/* LEFT: Logo Section */}

@@ -72,14 +72,14 @@ const Contact = () => {
   if (!mounted) return <div className="min-h-screen bg-[#020617]"></div>;
 
   return (
-    <section id="contact" className="relative w-full py-24 bg-[#020617] transition-colors duration-500 overflow-hidden z-20">
+    <section id="contact" className="relative w-full py-20 bg-[#020617] transition-colors duration-500 overflow-hidden z-20">
       
       {/* BACKGROUND DECOR TEXT */}
       <div className="absolute top-20 right-10 opacity-[0.03] pointer-events-none select-none overflow-hidden">
         <h2 className="text-[15vw] font-black uppercase text-white leading-none">CONNECT</h2>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-4  relative z-10">
         
         {/* SECTION HEADER */}
         <div className="mb-20 text-center lg:text-left">
@@ -117,8 +117,8 @@ const Contact = () => {
                <div className="space-y-10">
                   {[
                     { icon: <Mail className="text-blue-500" />, label: "Direct Email", value: "mdmahfuzahmedony@gmail.com" },
-                    { icon: <Phone className="text-cyan-400" />, label: "Whatsapp/Phone", value: "+880 1234 5678" },
-                    { icon: <MapPin className="text-orange-500" />, label: "Current Location", value: "Dhaka, Bangladesh" },
+                    { icon: <Phone className="text-cyan-400" />, label: "Whatsapp/Phone", value: "+880 1309 834483" },
+                    { icon: <MapPin className="text-orange-500" />, label: "Current Location", value: "Jessore, Bangladesh" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-6 group/item">
                        <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-[1.2rem] flex items-center justify-center shadow-lg group-hover/item:bg-cyan-400 group-hover/item:text-black transition-all duration-300">

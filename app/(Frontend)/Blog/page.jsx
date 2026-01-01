@@ -60,7 +60,7 @@ const BlogPage = () => {
         <h2 className="text-[20vw] font-black uppercase leading-none">BLOG</h2>
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-10 relative z-10">
         
         {/* Header */}
         <div className="mb-16">

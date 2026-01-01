@@ -12,14 +12,14 @@ const About = () => {
 
   return (
     // We remove the !mounted check here so it ALWAYS renders.
-    <section id="about" className="relative max-w-[1400px] mx-auto  py-32 bg-white dark:bg-[#020617] transition-colors duration-500 z-20">
+    <section id="about" className="relative max-w-[1600px] mx-auto  py-32 bg-white dark:bg-[#020617] transition-colors duration-500 z-20">
       
       {/* Background Decorative Text */}
       <div className="absolute top-10 left-10 opacity-[0.03] dark:opacity-[0.08] pointer-events-none select-none">
         <h2 className="text-[12vw] font-black uppercase tracking-tighter">ABOUT ME</h2>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* LEFT COLUMN: Stats */}
@@ -29,7 +29,7 @@ const About = () => {
             viewport={{ once: true }}
             className="lg:col-span-5 space-y-10"
           >
-            <div className="bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-[2.5rem] p-10 backdrop-blur-md shadow-2xl">
+            <div className="bg-slate-50 dark:bg-white/5  border-slate-200 dark:border-white/10 rounded-[2.5rem] p-10 backdrop-blur-md shadow-2xl">
                <h3 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-3">
                  <User className="text-blue-600 dark:text-cyan-400" /> Profile
                </h3>

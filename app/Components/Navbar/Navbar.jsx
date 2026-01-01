@@ -12,10 +12,10 @@ const Navbar = () => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return <div className="h-[64px] max-w-[1400px] mx-auto"></div>;
+  if (!mounted) return <div className="h-[64px] max-w-[1500px] mx-auto"></div>;
 
   return (
-    <nav className="navbar max-w-[1400px] mx-auto bg-white dark:bg-[#0a0f1d] backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-2xl px-5 sticky top-5 z-50 shadow-md transition-all duration-300">
+    <nav className="navbar max-w-[1600px] mx-auto bg-white dark:bg-[#0a0f1d] backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-2xl px-5 sticky top-5 z-50 shadow-md transition-all duration-300">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-slate-900 dark:text-white">
@@ -55,7 +55,7 @@ const Navbar = () => {
 
         <a 
           href="https://drive.google.com/file/d/1Wl2vn2k4oEV7IxkNj7UV78lfs0IbZGZX/view?usp=sharing" 
-          className="bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-400 text-white px-6 py-2.5 rounded-xl font-black uppercase text-[10px] tracking-widest transition-all active:scale-95 shadow-lg"
+          className="bg-orange-500 dark:bg-orange-500 hover:bg-orange-300 dark:hover:bg-orange-400 text-white px-6 py-2.5 rounded-xl font-black uppercase text-[10px] tracking-widest transition-all active:scale-95 shadow-lg"
         >
           Resume
         </a>

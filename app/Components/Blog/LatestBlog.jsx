@@ -37,7 +37,7 @@ const latestPosts = [
 
 const LatestBlog = () => {
   return (
-    <section id="latest-blog" className="relative w-full py-24 bg-[#020617] overflow-hidden">
+    <section id="latest-blog" className="relative w-full py-4 bg-[#020617] overflow-hidden">
       
       {/* Background Big Text (আপনার ডিজাইন অনুযায়ী) */}
       <div className="absolute top-20 right-0 opacity-[0.03] pointer-events-none select-none overflow-hidden">
@@ -46,7 +46,7 @@ const LatestBlog = () => {
         </h2>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-4  relative z-10">
         
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">

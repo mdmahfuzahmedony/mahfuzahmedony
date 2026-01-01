@@ -50,7 +50,7 @@ const Testimonial = () => {
         <h2 className="text-[10vw] font-black uppercase">VOICES</h2>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-4  relative z-10">
         
         {/* HEADING AREA */}
         <div className="mb-16 text-center lg:text-left">

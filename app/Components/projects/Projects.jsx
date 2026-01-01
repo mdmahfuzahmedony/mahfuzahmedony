@@ -33,14 +33,14 @@ const Projects = () => {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <section id="projects" className="relative w-full py-24 bg-[#020617] overflow-hidden">
+    <section id="projects" className="relative w-full py-4 bg-[#020617] overflow-hidden">
       
       {/* Background Decor Text */}
-      <div className="absolute top-20 left-10 opacity-[0.03] pointer-events-none select-none">
+      <div className="absolute top-10 left-10 opacity-[0.03] pointer-events-none select-none">
         <h2 className="text-[12vw] font-black uppercase text-white leading-none">WORKS</h2>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-4  relative z-10">
         
         {/* Header Section */}
         <div className="text-center mb-16">
