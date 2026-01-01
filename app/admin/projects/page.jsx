@@ -36,52 +36,79 @@ const AdminProjects = () => {
   };
 
   return (
-    <div className="space-y-8 text-white">
-      <div className="flex justify-between items-center px-4">
+    <div className="space-y-6 text-white max-w-7xl mx-auto px-4 py-6">
+      {/* Header Section */}
+      <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-3xl font-black">Manage <span className="text-cyan-400">Projects.</span></h2>
-          <p className="text-slate-500 text-sm mt-1 uppercase font-bold tracking-widest text-[10px]">Total: {projects.length} Works</p>
+          <h2 className="text-3xl font-black tracking-tight">Manage <span className="text-cyan-400">Projects.</span></h2>
+          <p className="text-slate-500 text-[10px] mt-1 uppercase font-bold tracking-[0.2em]">Total: {projects.length} Works</p>
         </div>
         <Link href="/admin/projects/add-project">
-            <button className="flex items-center gap-2 bg-cyan-400 text-black px-8 py-4 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-white transition-all shadow-xl">
-            <Plus size={18}/> New Project
+            <button className="flex items-center gap-2 bg-cyan-400 text-black px-6 py-3 rounded-xl font-black uppercase text-[11px] tracking-widest hover:bg-white transition-all shadow-lg active:scale-95">
+            <Plus size={16}/> New Project
             </button>
         </Link>
       </div>
 
-      <div className="bg-[#0a0f1d] border border-white/5 rounded-[3rem] overflow-hidden shadow-2xl">
+      {/* Table Section */}
+      <div className="bg-[#0a0f1d] border border-white/5 rounded-3xl overflow-hidden shadow-2xl">
         {isLoading ? (
-          <div className="p-24 flex justify-center"><Loader2 className="animate-spin text-cyan-400" size={40}/></div>
+          <div className="p-20 flex justify-center"><Loader2 className="animate-spin text-cyan-400" size={40}/></div>
         ) : (
-          <table className="w-full text-left">
-            <thead>
-              <tr className="text-slate-500 text-[10px] uppercase tracking-[0.2em] border-b border-white/5">
-                <th className="px-10 py-7 font-black">Project Name</th>
-                <th className="px-10 py-7 font-black">Category</th>
-                <th className="px-10 py-7 font-black">Links</th>
-                <th className="px-10 py-7 text-right font-black">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/5 py-4">
-              {projects.map((proj) => (
-                <tr key={proj._id} className="hover:bg-white/[0.02] transition-colors group py-2">
-                  <td className="px-10 py-7 font-bold text-sm">{proj.name}</td>
-                  <td className="px-10 py-7 text-[10px] text-orange-500 font-black uppercase tracking-widest">{proj.category}</td>
-                  <td className="px-10 py-7">
-                    <a href={proj.liveLink} target="_blank" className="text-slate-500 hover:text-cyan-400 flex items-center gap-1 text-[10px] font-bold uppercase">Live <ExternalLink size={12}/></a>
-                  </td>
-                  <td className="px-10 py-7 text-right">
-                    <div className="flex justify-end gap-3">
-                      <Link href={`/admin/projects/update/${proj._id}`}>
-                        <button className="p-3 bg-white/5 hover:bg-blue-500/20 text-blue-400 rounded-xl transition-all"><Pencil size={16}/></button>
-                      </Link>
-                      <button onClick={() => handleDelete(proj._id)} className="p-3 bg-white/5 hover:bg-red-500/20 text-red-500 rounded-xl transition-all"><Trash2 size={16}/></button>
-                    </div>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="text-slate-500 text-[10px] uppercase tracking-[0.15em] border-b border-white/5 bg-white/[0.01]">
+                  <th className="px-8 py-5 font-bold">Project Name</th>
+                  <th className="px-8 py-5 font-bold">Category</th>
+                  <th className="px-8 py-5 font-bold">Links</th>
+                  <th className="px-8 py-5 text-right font-bold">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-white/5">
+                {projects.map((proj) => (
+                  <tr key={proj._id} className="hover:bg-white/[0.03] transition-colors group">
+                    <td className="px-8 py-4 font-semibold text-sm text-slate-200">
+                      {proj.name}
+                    </td>
+                    <td className="px-8 py-4">
+                      <span className="text-[10px] text-orange-400 font-bold uppercase tracking-wider bg-orange-500/10 px-2 py-1 rounded-md">
+                        {proj.category}
+                      </span>
+                    </td>
+                    <td className="px-8 py-4">
+                      <a 
+                        href={proj.liveLink} 
+                        target="_blank" 
+                        className="text-slate-400 hover:text-cyan-400 flex items-center gap-1.5 text-[11px] font-bold uppercase transition-all"
+                      >
+                        Live <ExternalLink size={13}/>
+                      </a>
+                    </td>
+                    <td className="px-8 py-4">
+                      <div className="flex justify-end gap-2">
+                        <Link href={`/admin/projects/update/${proj._id}`}>
+                          <button className="p-2.5 bg-white/5 hover:bg-blue-500/20 text-blue-400 rounded-lg transition-all border border-white/5" title="Edit">
+                            <Pencil size={15}/>
+                          </button>
+                        </Link>
+                        <button 
+                          onClick={() => handleDelete(proj._id)} 
+                          className="p-2.5 bg-white/5 hover:bg-red-500/20 text-red-500 rounded-lg transition-all border border-white/5" 
+                          title="Delete"
+                        >
+                          <Trash2 size={15}/>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {projects.length === 0 && (
+              <div className="p-10 text-center text-slate-500 text-sm italic">No projects found. Add your first project!</div>
+            )}
+          </div>
         )}
       </div>
     </div>
