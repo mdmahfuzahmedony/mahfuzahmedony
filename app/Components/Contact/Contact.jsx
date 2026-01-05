@@ -95,7 +95,7 @@ const Contact = () => {
              whileInView={{ opacity: 1, y: 0 }}
              className="text-5xl lg:text-8xl font-black text-white"
            >
-            Lets <span className="text-cyan-400 italic">Talk.</span>
+            Lets <span className="text-cyan-400 ">Talk.</span>
            </motion.h2>
         </div>
 

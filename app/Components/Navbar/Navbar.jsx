@@ -54,7 +54,7 @@ const Navbar = () => {
         </button>
 
         <a 
-          href="https://drive.google.com/file/d/1Wl2vn2k4oEV7IxkNj7UV78lfs0IbZGZX/view?usp=sharing" 
+          href="/Mahfuz_Ahmed.pdf" download={"Mahfuz_Ahmed.pdf"}
           className="bg-orange-500 dark:bg-orange-500 hover:bg-orange-300 dark:hover:bg-orange-400 text-white px-6 py-2.5 rounded-xl font-black uppercase text-[10px] tracking-widest transition-all active:scale-95 shadow-lg"
         >
           Resume
