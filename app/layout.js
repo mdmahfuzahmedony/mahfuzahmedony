@@ -15,8 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Mahfuz - Portfolio",
+  title: "Mahfuz Ahmed",
   description: "Web Developer Portfolio",
+   icons: {
+    icon: '/mahfuzahmedony.png', // আপনার ইমেজ যদি public ফোল্ডারে থাকে
+  },
 };
 
 export default function RootLayout({ children }) {
