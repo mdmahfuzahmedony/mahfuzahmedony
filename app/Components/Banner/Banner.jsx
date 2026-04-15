@@ -104,7 +104,11 @@ const Banner = () => {
                     ))}
                 </div>
 
-                {/* --- RIGHT SIDE: BIO --- */}
+
+
+                {/* --- RIGHT SIDE: BIO     --- */}
+
+
                 <div className="lg:col-span-4 flex flex-col items-center lg:items-end order-3">
                     <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}
                         className="relative p-8 lg:p-12 rounded-[2rem] lg:rounded-[2.5rem] bg-white/[0.03] backdrop-blur-3xl border border-white/5 shadow-2xl w-full max-w-sm"
@@ -120,7 +124,7 @@ const Banner = () => {
                         </p>
 
                         <div className="mt-8 pt-8 border-t border-white/5">
-                             <a href="/Mahfuz_Ahmed.pdf" download className="flex items-center gap-3 text-white font-bold text-[10px] uppercase tracking-widest hover:text-cyan-400 transition-colors">
+                             <a href="/Full_Stack_Developer.pdf" download className="flex items-center gap-3 text-white font-bold text-[10px] uppercase tracking-widest hover:text-cyan-400 transition-colors">
                                 Download CV <Download size={16} />
                             </a>
                         </div>
