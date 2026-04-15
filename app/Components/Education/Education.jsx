@@ -29,7 +29,7 @@ const Education = () => {
   ];
 
   const certifications = [
-    { title: 'Full Stack Web Development', issued: 'Programming Hero', link: 'file:///C:/Users/ASUS/Downloads/ef259889-96ae-41f4-88e8-28140076c0fa%20(1).pdf' },
+    { title: 'Full Stack Web Development', issued: 'Programming Hero', link: '/Certificate.pdf' },
     { title: 'Responsive Web Design', issued: 'FreeCodeCamp', link: '#' },
     { title: 'JavaScript Algorithms', issued: 'Udemy', link: '#' },
   ];

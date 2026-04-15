@@ -60,7 +60,7 @@ const Navbar = () => {
           {/* --- RESUME ACTION --- */}
           <div className="flex items-center gap-4">
             <a 
-              href="/Mahfuz_Ahmed.pdf" download
+              href="/Full_Stack_Developer.pdf" download
               className="hidden md:flex bg-orange-500 hover:bg-orange-600 text-white px-7 py-3 rounded-xl font-black uppercase text-[10px] tracking-widest transition-all active:scale-95 shadow-lg shadow-orange-500/20 items-center gap-2"
             >
               Resume <Download size={14} />
