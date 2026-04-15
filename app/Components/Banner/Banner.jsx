@@ -1,160 +1,194 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, ArrowRight, Download, MessageCircle, Globe, Code2, Database } from 'lucide-react';
+import { Github, Linkedin, Twitter, ArrowRight, Download, MessageCircle, Zap } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Image Path
 import mahfuzProfile from "../../(Frontend)/iamge/MahfuzAhmedOny.png";
-import Link from 'next/link';
 
 const Banner = () => {
-  // সোশ্যাল মিডিয়া লিঙ্কগুলো এখানে বসান
-  const socialLinks = [
-    { icon: <Github size={20} />, url: "https://github.com/mdmahfuzahmedony" },
-    { icon: <Linkedin size={20} />, url: "https://www.linkedin.com/in/mahfuzahmedony/" }, // এখানে আপনার লিঙ্ক দিন
-    { icon: <Twitter size={20} />, url: "https://twitter.com/https://x.com/MahfuzAhmedOny" }    // এখানে আপনার লিঙ্ক দিন
-  ];
+    const socialLinks = [
+        { icon: <Github size={20} />, url: "https://github.com/mdmahfuzahmedony" },
+        { icon: <Linkedin size={20} />, url: "https://www.linkedin.com/in/mahfuzahmedony/" },
+        { icon: <Twitter size={20} />, url: "https://x.com/MahfuzAhmedOny" }
+    ];
 
-  return (
-    <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-white dark:bg-[#020617] transition-colors duration-500 z-10 py-24 lg:py-0">
+    // আপনার সব অরিজিনাল টেক লোগো (CDN থেকে নেওয়া)
+    const orbitSkills = [
+        { img: "https://cdn.simpleicons.org/html5/E34F26", label: "HTML5" },
+        { img: "https://cdn.simpleicons.org/css3/1572B6", label: "CSS3" },
+        { img: "https://cdn.simpleicons.org/javascript/F7DF1E", label: "JavaScript" },
+        { img: "https://cdn.simpleicons.org/react/61DAFB", label: "React.js" },
+        { img: "https://cdn.simpleicons.org/nextdotjs/white", label: "Next.js" },
+        { img: "https://cdn.simpleicons.org/framer/white", label: "Framer Motion" },
+        { img: "https://cdn.simpleicons.org/firebase/FFCA28", label: "Firebase" },
+        { img: "https://cdn.simpleicons.org/supabase/3ECF8E", label: "Supabase" },
+        { img: "https://cdn.simpleicons.org/prisma/white", label: "Prisma" },
+        { img: "https://cdn.simpleicons.org/docker/2496ED", label: "Docker" },
+        { img: "https://cdn.simpleicons.org/socketdotio/white", label: "Socket.io" },
+    ];
 
-      {/* 1. DYNAMIC GRID BACKGROUND */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.07] pointer-events-none"
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54 48L54 6L6 6L6 54L48 54L48 48L54 48Z' fill='none' stroke='%23444' stroke-width='1'/%3E%3C/svg%3E")` }}>
-      </div>
-
-      {/* 2. BACKGROUND IMAGE */}
-      <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-          className="relative w-full h-full max-w-[1200px] flex items-end justify-center"
-        >
-          <Image
-            src={mahfuzProfile}
-            alt="Mahfuz Ahmed"
-            className="w-auto h-[50%] lg:h-[92%] object-contain grayscale brightness-90 dark:brightness-50 contrast-125 opacity-20 lg:opacity-100"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#020617] via-transparent to-transparent h-full" />
-        </motion.div>
-      </div>
-
-      {/* 3. TECH NODES */}
-      <div className="absolute inset-0 z-20 pointer-events-none hidden xl:block">
-        {[
-          { icon: <Database className="text-green-500" />, label: "MongoDB", pos: "top-[20%] left-[15%]" },
-          { icon: <Code2 className="text-blue-400" />, label: "React.js", pos: "top-[25%] right-[15%]" },
-        ].map((tech, i) => (
-          <motion.div
-            key={i}
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity, delay: i, ease: "easeInOut" }}
-            className={`absolute ${tech.pos} p-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center gap-3 shadow-lg`}
-          >
-            {tech.icon}
-            <span className="text-xs font-black tracking-widest text-slate-900 dark:text-white uppercase">{tech.label}</span>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* 4. MAIN CONTENT CONTAINER */}
-      <div className="relative z-30 max-w-[1600px] mx-auto w-full px-6 lg:px-4 flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 pb-40 lg:pb-0">
-
-        {/* LEFT: HEADING */}
-        <div className="flex flex-col justify-center text-center lg:text-left space-y-6 lg:space-y-8">
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-          >
-            <h1 className="text-5xl md:text-7xl lg:text-[8.5rem] font-black leading-[1.1] lg:leading-[0.85] tracking-tighter text-slate-900 dark:text-white lg:mix-blend-difference">
-              Hi, <br className="hidden lg:block" /> I am <span className="text-blue-600 dark:text-cyan-400">Mahfuz</span>
-            </h1>
-            <p className="mt-4 lg:mt-8 text-slate-500 dark:text-slate-400 font-black uppercase tracking-[0.2em] lg:tracking-[0.6em] text-[10px] lg:text-base border-blue-600 dark:border-cyan-400 lg:border-l-4 lg:pl-4 mx-auto lg:mx-0 w-fit">
-              Full Stack Developer
-            </p>
-          </motion.div>
-
-          <motion.div className="flex justify-center lg:justify-start">
-            <button className="group relative px-10 lg:px-12 py-4 lg:py-5 bg-slate-900 dark:bg-white text-white dark:text-black font-black rounded-2xl overflow-hidden transition-all hover:scale-105 shadow-xl">
-              <span className="relative z-10 flex items-center gap-3 text-sm lg:text-lg uppercase">Hire Me <ArrowRight size={20} /></span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </button>
-          </motion.div>
-        </div>
-
-        {/* RIGHT: BIO CARD */}
-        <div className="flex flex-col justify-center items-center lg:items-end text-center lg:text-right">
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="max-w-md p-8 lg:p-10 rounded-[2.5rem] lg:rounded-[3rem] bg-white dark:bg-white/[0.08] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-2xl relative"
-          >
-            <span className="text-orange-500 font-black uppercase text-[10px] lg:text-xs tracking-widest">Expertise</span>
-            <h3 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white mt-3 lg:mt-4 leading-tight">
-              Developing Next-Gen <br className="hidden lg:block" /> MERN Solutions.
-            </h3>
-            <p className="text-slate-500 dark:text-slate-400 mt-4 lg:mt-6 leading-relaxed text-sm lg:text-lg font-medium">
-              Passionate about creating high-performance, interactive, and scalable web applications.
-            </p>
-
-            {/* সরাসরি ডাউনলোড লিঙ্ক */}
-            <a
-              href="/Mahfuz_Ahmed.pdf" download={"Mahfuz_Ahmed.pdf"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 mt-6 lg:mt-10 text-orange-500 font-black border-b-2 border-orange-500 pb-1 uppercase text-[10px] lg:text-xs tracking-widest hover:text-orange-600 hover:border-orange-600 transition-all cursor-pointer"
-            >
-              Download CV <Download size={16} />
-            </a>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* 5. BOTTOM BAR */}
-      <div className="absolute bottom-6 lg:bottom-10 w-full max-w-[1600px] left-1/2 -translate-x-1/2 px-6 lg:px-4 flex flex-col md:flex-row justify-between items-center gap-6 lg:gap-10 z-40">
-
-        {/* Socials - Fixed mapping */}
-        <div className="flex items-center gap-5 lg:gap-8">
-          {socialLinks.map((social, i) => (
-            <motion.a
-              key={i}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ y: -5, color: '#22d3ee' }}
-              className="text-slate-400 transition-all p-3 bg-slate-100 dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-cyan-500/50"
-            >
-              {social.icon}
-            </motion.a>
-          ))}
-          <div className="hidden sm:flex items-center gap-4 border-l border-slate-300 dark:border-slate-700 pl-6">
-            <Globe size={16} className="text-cyan-500" />
-            <span className="text-[10px] text-slate-500 dark:text-slate-400 font-black tracking-widest uppercase">MERN STACK</span>
-          </div>
-        </div>
-
-        {/* Let's Chat */}
-        <Link href="/#contact">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-4 group cursor-pointer bg-white dark:bg-white/5 p-2 pr-6 rounded-full border border-slate-200 dark:border-white/10 shadow-lg"
-          >
-            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-slate-900 dark:bg-cyan-500 rounded-full flex items-center justify-center text-white dark:text-black relative">
-              <MessageCircle size={20} />
-              <div className="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-black animate-pulse" />
+    return (
+        <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-[#020617] z-10 py-20 lg:py-0">
+            
+            {/* Background Grid */}
+            <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none"
+                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54 48L54 6L6 6L6 54L48 54L48 48L54 48Z' fill='none' stroke='%23444' stroke-width='1'/%3E%3C/svg%3E")` }}>
             </div>
-            <span className="font-black text-slate-900 dark:text-white uppercase tracking-widest text-[10px]">Lets Chat</span>
-          </motion.div>
-        </Link>
-        
-      </div>
 
-    </section>
-  );
+            <div className="relative z-30 max-w-[1700px] mx-auto w-full px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 items-center gap-10">
+                
+                {/* --- LEFT SIDE: HEADING --- */}
+                <div className="lg:col-span-5 flex flex-col space-y-10 text-center lg:text-left order-2 lg:order-1">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <h1 className="text-7xl md:text-9xl lg:text-[8.5rem] font-black leading-[0.85] tracking-tighter text-white">
+                            Hi, <br /> I am <br /> 
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Mahfuz</span>
+                        </h1>
+                        <div className="mt-8 flex items-center gap-4 justify-center lg:justify-start">
+                            <span className="h-[2px] w-12 bg-cyan-500"></span>
+                            <p className="text-slate-400 font-black uppercase tracking-[0.5em] text-[10px] lg:text-xs">
+                                Full Stack Developer
+                            </p>
+                        </div>
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}>
+                        <button className="group relative px-10 py-5 bg-white text-[#020617] font-black rounded-2xl overflow-hidden transition-all hover:scale-105 shadow-[0_0_30px_rgba(34,211,238,0.2)]">
+                            <span className="relative z-10 flex items-center gap-4 uppercase tracking-[0.2em] text-sm font-bold">
+                                Hire Me Now <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+                            </span>
+                            <motion.div 
+                                animate={{ x: ['-100%', '200%'] }}
+                                transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent -skew-x-12" 
+                            />
+                        </button>
+                    </motion.div>
+                </div>
+
+                {/* --- MIDDLE: CENTERED IMAGE & ORIGINAL TECH LOGOS --- */}
+                <div className="lg:col-span-3 relative flex items-center justify-center h-[450px] lg:h-[650px] order-1 lg:order-2">
+                    
+                    {/* Orbit Ring */}
+                    <div className="absolute w-[300px] h-[300px] lg:w-[480px] lg:h-[480px] border border-dashed border-slate-800 rounded-full animate-[spin_60s_linear_infinite]" />
+                    
+                    {/* CENTERED PROFILE IMAGE */}
+                    <motion.div 
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 1.5 }}
+                        className="relative z-20 w-[180px] h-[180px] lg:w-[280px] lg:h-[280px] rounded-full overflow-hidden border-4 border-slate-800 shadow-[0_0_50px_rgba(34,211,238,0.2)] bg-[#0f172a]"
+                    >
+                        <Image
+                            src={mahfuzProfile}
+                            alt="Mahfuz Ahmed"
+                            className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-500"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/40 via-transparent to-transparent" />
+                    </motion.div>
+
+                    {/* Orbiting Original Logos */}
+                    {orbitSkills.map((skill, i) => (
+                        <motion.div
+                            key={i}
+                            className="absolute"
+                            animate={{ rotate: 360 }}
+                            transition={{
+                                duration: 45,
+                                repeat: Infinity,
+                                ease: "linear",
+                                delay: i * (45 / orbitSkills.length)
+                            }}
+                            style={{ width: '100%', height: '100%', position: 'absolute' }}
+                        >
+                            <motion.div 
+                                className="absolute top-0 left-1/2 -translate-x-1/2 group"
+                                animate={{ rotate: -360 }}
+                                transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                            >
+                                <div className="p-2.5 bg-[#0f172a]/95 backdrop-blur-2xl border border-slate-700/50 rounded-xl hover:border-cyan-500 hover:scale-125 transition-all shadow-2xl flex items-center justify-center">
+                                    <img src={skill.img} alt={skill.label} className="w-6 h-6 object-contain" />
+                                    {/* Tooltip */}
+                                    <span className="absolute -top-12 left-1/2 -translate-x-1/2 text-[9px] font-black text-cyan-400 opacity-0 group-hover:opacity-100 transition-all uppercase tracking-widest bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap z-50">
+                                        {skill.label}
+                                    </span>
+                                </div>
+                            </motion.div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* --- RIGHT SIDE: BIO --- */}
+                <div className="lg:col-span-4 flex flex-col items-center lg:items-end order-3">
+                    <motion.div 
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1 }}
+                        className="relative p-10 lg:p-12 rounded-[2.5rem] bg-white/[0.03] backdrop-blur-3xl border border-white/5 shadow-2xl max-w-sm"
+                    >
+                        <div className="absolute -top-6 -right-6 w-14 h-14 bg-cyan-500 rounded-2xl flex items-center justify-center text-[#020617] shadow-lg">
+                            <Zap size={24} fill="currentColor" />
+                        </div>
+                        
+                        <span className="text-cyan-500 font-black uppercase text-[10px] tracking-[0.4em]">Expertise</span>
+                        <h3 className="text-3xl font-black text-white mt-4 leading-tight">
+                            Building Scalable <br /> MERN Solutions.
+                        </h3>
+                        <p className="text-slate-400 mt-6 leading-relaxed text-base font-medium">
+                            Developing high-performance digital tools with <span className="text-white">Next.js, Prisma, and Docker.</span> 
+                        </p>
+
+                        <div className="mt-10 pt-8 border-t border-white/5">
+                             <a
+                                href="/Mahfuz_Ahmed.pdf" download={"Mahfuz_Ahmed.pdf"}
+                                className="flex items-center gap-3 text-white font-bold text-[10px] uppercase tracking-[0.3em] hover:text-cyan-400 transition-colors"
+                            >
+                                Get My CV <Download size={16} />
+                            </a>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="absolute bottom-10 w-full max-w-[1700px] left-1/2 -translate-x-1/2 px-12 flex flex-col md:flex-row justify-between items-center gap-8 z-40">
+                <div className="flex items-center gap-5">
+                    {socialLinks.map((social, i) => (
+                        <motion.a
+                            key={i}
+                            href={social.url}
+                            target="_blank"
+                            whileHover={{ y: -5, color: '#22d3ee' }}
+                            className="text-slate-500 transition-all p-3 bg-white/5 rounded-xl border border-white/10 hover:border-cyan-500/50"
+                        >
+                            {social.icon}
+                        </motion.a>
+                    ))}
+                </div>
+
+                <Link href="/#contact">
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        className="flex items-center gap-4 bg-white/5 p-1.5 pr-8 rounded-full border border-white/10 shadow-lg cursor-pointer"
+                    >
+                        <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center text-[#020617] relative shadow-md">
+                            <MessageCircle size={22} />
+                            <div className="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-[#020617] animate-pulse" />
+                        </div>
+                        <span className="font-black text-white uppercase tracking-widest text-[10px]">Let's Connect</span>
+                    </motion.div>
+                </Link>
+            </div>
+        </section>
+    );
 };
 
 export default Banner;
