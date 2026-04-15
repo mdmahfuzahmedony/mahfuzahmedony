@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Twitter, Linkedin, Facebook, Heart } from 'lucide-react';
+import { Link } from 'next/link';
 
 const Footer = () => {
   const [mounted, setMounted] = useState(false);
@@ -64,9 +65,17 @@ const Footer = () => {
           <div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-400 tracking-[0.4em]">
              © {new Date().getFullYear()} All Rights Reserved
           </div>
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-500 dark:text-slate-500 tracking-[0.2em]">
-            Designed with <Heart size={12} className="text-red-500 fill-red-500" /> by Mahfuz
-          </div>
+
+<div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-500 dark:text-slate-500 tracking-[0.2em]">
+  Designed with <Heart size={12} className="text-red-500 fill-red-500" /> by 
+  <Link 
+    href="https://mahfuzahmedony.vercel.app/" // এখানে আপনার পছন্দের লিঙ্কটি দিন
+    target="_blank" 
+    className="hover:text-red-500 transition-colors underline-offset-4 hover:underline"
+  >
+    Mahfuz
+  </Link>
+</div>
         </div>
 
       </div>
