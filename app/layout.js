@@ -1,8 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google"; // সঠিক ইম্পোর্ট দেখে নিন
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
-import { ThemeProvider } from "./Components/ThemePorvider/ThemProvider"; // প্রোভাইডার ইম্পোর্ট করুন
+import { ThemeProvider } from "./Components/ThemePorvider/ThemProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,14 +17,15 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Mahfuz Ahmed",
   description: "Web Developer Portfolio",
-   icons: {
-    icon: '/mahfuzahmedony.png', // আপনার ইমেজ যদি public ফোল্ডারে থাকে
+  icons: {
+    icon: '/mahfuzahmedony.png',
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" > {/* suppressHydrationWarning যোগ করা জরুরি */}
+    // suppressHydrationWarning অবশ্যই html ট্যাগের ভেতরে থাকতে হবে
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
@@ -33,7 +34,7 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <Navbar />
-          {children}
+          <main>{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

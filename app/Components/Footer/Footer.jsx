@@ -1,119 +1,74 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from 'next-themes';
-import { Github, Twitter, Linkedin, Facebook, ArrowUp } from 'lucide-react';
+import { Github, Twitter, Linkedin, Facebook, Heart } from 'lucide-react';
 
 const Footer = () => {
-  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  // The "Spread" color logic for social icons (matches Navbar)
-  const glowEffect = theme === 'dark' 
-    ? [
-        "0px 0px 0px rgba(34, 211, 238, 0)", 
-        "0px 0px 15px rgba(34, 211, 238, 0.6)", 
-        "0px 0px 0px rgba(34, 211, 238, 0)"
-      ]
-    : [
-        "0px 0px 0px rgba(59, 130, 246, 0)", 
-        "0px 0px 15px rgba(59, 130, 246, 0.4)", 
-        "0px 0px 0px rgba(59, 130, 246, 0)"
-      ];
+  if (!mounted) return null;
 
   const socialLinks = [
-    { icon: <Github size={20} />, href: "#" },
+    { icon: <Github size={20} />, href: "https://github.com/mdmahfuzahmedony" },
     { icon: <Linkedin size={20} />, href: "#" },
     { icon: <Twitter size={20} />, href: "#" },
     { icon: <Facebook size={20} />, href: "#" },
   ];
 
   return (
-    <footer className="relative mt-20">
-      {/* 1. TOP BORDER SPREAD: Animated gradient line */}
-      <motion.div 
-        animate={{ 
-          opacity: [0.2, 0.7, 0.2],
-          width: ["70%", "100%", "70%"] 
-        }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="h-[2px] mx-auto bg-gradient-to-r from-transparent via-blue-500 dark:via-cyan-400 to-transparent"
-      />
+    <footer className="relative py-20 bg-white dark:bg-[#020617] transition-colors duration-500 overflow-hidden">
+      
+      {/* ১. টপ ডিভাইডার লাইন (খুবই চিকন এবং সিম্পল) */}
+      <div className="max-w-[1200px] mx-auto px-6 mb-16">
+        <div className="h-[1px] w-full bg-slate-200 dark:bg-white/10" />
+      </div>
 
-      <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl text-slate-600 dark:text-slate-300 transition-colors duration-500">
-        <div className="max-w-[1600px] mx-auto px-6  py-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
-            
-            {/* LEFT: Logo Section */}
-            <div>
-              <Link href="/" className="text-3xl font-bold tracking-tighter text-slate-900 dark:text-white">
-                MAHFUZ<span className="text-blue-500 dark:text-cyan-400">.</span>
-              </Link>
-              <p className="mt-3 text-sm opacity-70">
-                Crafting modern web experiences with <br className="hidden md:block" /> focus on performance and design.
-              </p>
-            </div>
+      <div className="max-w-[1600px] mx-auto px-6 text-center">
+        
+        {/* ২. লোগো ও ব্র্যান্ডিং */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-4">
+            MAHFUZ<span className="text-blue-600 dark:text-cyan-400">.</span>
+          </h2>
+          <p className="text-slate-500 dark:text-slate-400 text-sm font-medium max-w-md mx-auto leading-relaxed">
+            Building digital products, brands, and experience. <br />
+            Focusing on clean code and pixel perfect design.
+          </p>
+        </motion.div>
 
-            {/* CENTER: Links */}
-            <nav className="flex flex-wrap justify-center gap-8 font-semibold">
-              <Link href="/#about" className="hover:text-blue-500 dark:hover:text-cyan-400 transition-colors">About</Link>
-              <Link href="/#projects" className="hover:text-blue-500 dark:hover:text-cyan-400 transition-colors">Projects</Link>
-              <Link href="/#contact" className="hover:text-blue-500 dark:hover:text-cyan-400 transition-colors">Contact</Link>
-              <Link href="/Blog" className="hover:text-blue-500 dark:hover:text-cyan-400 transition-colors">Blog</Link>
-            </nav>
-
-            {/* RIGHT: Social Icons with "SPREAD" Animation */}
-            <div className="flex justify-center md:justify-end gap-5">
-              {mounted && socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  // Infinite Floating and Background Spread (Glow)
-                  animate={{ 
-                    y: [0, -5, 0],
-                    boxShadow: glowEffect 
-                  }}
-                  transition={{ 
-                    duration: 3, 
-                    repeat: Infinity, 
-                    ease: "easeInOut",
-                    delay: index * 0.2 // Staggered start for more "organic" feel
-                  }}
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  className="w-12 h-12 flex items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 transition-colors"
-                >
-                  {social.icon}
-                </motion.a>
-              ))}
-            </div>
-          </div>
-
-          {/* FOOTER BOTTOM */}
-          <div className="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-xs tracking-widest opacity-50 uppercase">
-              © {new Date().getFullYear()} MAHFUZ — Made with React & Next.js
-            </p>
-
-            <motion.button
-              onClick={scrollToTop}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="flex items-center gap-3 text-xs font-black tracking-widest text-blue-500 dark:text-cyan-400 uppercase group"
+        {/* ৩. সোশ্যাল লিংকস (সিম্পল সার্কেল স্টাইল) */}
+        <div className="flex justify-center gap-6 mt-10">
+          {socialLinks.map((social, index) => (
+            <motion.a
+              key={index}
+              href={social.href}
+              target="_blank"
+              whileHover={{ y: -5, scale: 1.1 }}
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-all duration-300 shadow-sm"
             >
-              Back to top
-              <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 group-hover:bg-blue-600 dark:group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300">
-                <ArrowUp size={14} />
-              </div>
-            </motion.button>
+              {social.icon}
+            </motion.a>
+          ))}
+        </div>
+
+        {/* ৪. কপিরাইট ও বটম ইনফো */}
+        <div className="mt-16 flex flex-col items-center gap-4">
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-400 tracking-[0.4em]">
+             © {new Date().getFullYear()} All Rights Reserved
+          </div>
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-500 dark:text-slate-500 tracking-[0.2em]">
+            Designed with <Heart size={12} className="text-red-500 fill-red-500" /> by Mahfuz
           </div>
         </div>
+
       </div>
     </footer>
   );

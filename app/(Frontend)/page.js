@@ -1,6 +1,6 @@
 import About from "../Components/About/About";
 import Banner from "../Components/Banner/Banner";
-import LatestBlog from "../Components/Blog/LatestBlog";
+
 import Contact from "../Components/Contact/Contact";
 import Education from "../Components/Education/Education";
 import Projects from "../Components/projects/Projects";
