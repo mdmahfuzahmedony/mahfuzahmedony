@@ -14,7 +14,6 @@ export default function Home() {
       <Education></Education>
       <Projects></Projects>
       <Testimonial></Testimonial>
-      <LatestBlog></LatestBlog>
       <Contact></Contact>
   
     </div>

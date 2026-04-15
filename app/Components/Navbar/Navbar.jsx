@@ -27,7 +27,7 @@ const Navbar = () => {
             <li><Link href="/#about">About</Link></li>
             <li><Link href="/#projects">Projects</Link></li>
             <li><Link href="/#contact">Contact</Link></li>
-            <li><Link href="/Blog">Blog</Link></li>
+          
           </ul>
         </div>
         
@@ -41,7 +41,7 @@ const Navbar = () => {
           <li className="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors cursor-pointer"><Link href="/#about">About</Link></li>
           <li className="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors cursor-pointer"><Link href="/#projects">Projects</Link></li>
           <li className="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors cursor-pointer"><Link href="/#contact">Contact</Link></li>
-          <li className="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors cursor-pointer"><Link href="/Blog">Blog</Link></li>
+         
         </ul>
       </div>
 
