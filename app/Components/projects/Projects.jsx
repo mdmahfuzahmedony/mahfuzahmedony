@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Loader2, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -11,7 +11,10 @@ const Projects = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 4; // ৪টির বেশি হলে পরের পেজে যাবে
+  const projectsPerPage = 4;
+
+  // স্ক্রল কন্ট্রোল করার জন্য Ref
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -37,10 +40,29 @@ const Projects = () => {
   const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
   const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
 
-  useEffect(() => { setCurrentPage(1); }, [activeCategory]);
+  // পেজ পরিবর্তন এবং অটো-স্ক্রল ফাংশন
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    
+    // পেজ পরিবর্তনের পর স্ক্রিনকে প্রজেক্ট সেকশনের শুরুতে নিয়ে যাবে
+    if (sectionRef.current) {
+      const yOffset = -80; // আপনার যদি ফিক্সড হেডার থাকে তবে এটা গ্যাপ রাখবে
+      const element = sectionRef.current;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => { 
+    setCurrentPage(1); 
+  }, [activeCategory]);
 
   return (
-    <section id="projects" className="relative w-full py-20 lg:py-32 bg-white dark:bg-[#020617] transition-colors duration-500 overflow-hidden">
+    <section 
+      ref={sectionRef} // এখানে Ref সেট করা হয়েছে
+      id="projects" 
+      className="relative w-full py-20 lg:py-32 bg-white dark:bg-[#020617] transition-colors duration-500 overflow-hidden"
+    >
       
       {/* Background Grid */}
       <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none"
@@ -61,7 +83,7 @@ const Projects = () => {
            </h2>
         </div>
 
-        {/* Filters - Mobile Scrollable */}
+        {/* Filters */}
         <div className="flex overflow-x-auto md:flex-wrap items-center gap-3 mb-12 pb-4 md:pb-0 no-scrollbar">
           {categories.map((cat) => (
             <button
@@ -86,19 +108,19 @@ const Projects = () => {
           </div>
         ) : (
           <>
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-              <AnimatePresence mode='popLayout'>
+            {/* min-h-[800px] দেওয়া হয়েছে যাতে পেজ পরিবর্তনের সময় লেআউট লাফ না দেয় */}
+            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 min-h-[600px]">
+              <AnimatePresence mode='wait'>
                 {currentProjects.map((project, i) => (
                   <motion.div
                     key={project._id}
                     layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.4, delay: i * 0.1 }}
                     className="group relative bg-slate-50/50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 rounded-[2.5rem] lg:rounded-[3.5rem] overflow-hidden flex flex-col transition-all hover:border-blue-500/40 shadow-sm hover:shadow-2xl"
                   >
-                    {/* BIG IMAGE BOX */}
                     <div className="relative aspect-[16/10] md:aspect-[16/9] w-full overflow-hidden">
                       <img
                         src={project.projectImage}
@@ -112,7 +134,6 @@ const Projects = () => {
                       </div>
                     </div>
 
-                    {/* CONTENT BELOW */}
                     <div className="p-8 lg:p-12 flex flex-col flex-grow">
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
@@ -132,7 +153,7 @@ const Projects = () => {
                         {project.description}
                       </p>
 
-                      <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-200 dark:border-white/10">
+                      <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-200 dark:border-white/10 mt-auto">
                         {project.techStack?.map((tech, index) => (
                           <span key={index} className="text-[9px] font-black text-slate-400 dark:text-slate-300 bg-slate-200/50 dark:bg-white/5 px-3 py-1 rounded-lg uppercase">
                             {tech}
@@ -150,7 +171,7 @@ const Projects = () => {
               <div className="flex justify-center items-center gap-4 mt-20">
                 <button
                   disabled={currentPage === 1}
-                  onClick={() => setCurrentPage(prev => prev - 1)}
+                  onClick={() => handlePageChange(currentPage - 1)}
                   className="w-12 h-12 rounded-2xl border border-slate-200 dark:border-white/10 disabled:opacity-30 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"
                 >
                   <ChevronLeft size={20} />
@@ -160,7 +181,7 @@ const Projects = () => {
                   {[...Array(totalPages)].map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => setCurrentPage(index + 1)}
+                      onClick={() => handlePageChange(index + 1)}
                       className={`w-12 h-12 rounded-2xl font-black text-xs transition-all ${
                         currentPage === index + 1
                           ? 'bg-blue-600 text-white'
@@ -174,7 +195,7 @@ const Projects = () => {
 
                 <button
                   disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage(prev => prev - 1)}
+                  onClick={() => handlePageChange(currentPage + 1)} // এখানে +১ করে ঠিক করা হয়েছে
                   className="w-12 h-12 rounded-2xl border border-slate-200 dark:border-white/10 disabled:opacity-30 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"
                 >
                   <ChevronRight size={20} />
