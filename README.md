@@ -81,7 +81,7 @@ Welcome to my professional portfolio! This is a high-performance, responsive, an
 
 ## 📸 Project Preview
 
-![Portfolio Screenshot](./public/screenshot.png) 
+![Portfolio Screenshot](https://i.ibb.co.com/dsvX4m5b/screencapture-mahfuzahmedony-vercel-app-2026-04-16-22-43-06.png) 
 *Replace the path above with your actual image path or a hosted link*
 
 ---
